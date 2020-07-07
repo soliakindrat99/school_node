@@ -1,14 +1,15 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const port = process.env.PORT || 3300;
+dotenv.config({ path: "../.env" });
+const port = process.env.PORT;
 
 const app = express();
 
-dotenv.config();
+
 
 app.set('view engine', 'ejs');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+console.log(port);
 app.listen(port, () => console.log('Server works on port 3300'));
