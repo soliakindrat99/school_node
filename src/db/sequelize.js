@@ -5,7 +5,7 @@ const lesson_model = require('../models/lesson');
 const group_model = require('../models/group');
 const student_model = require('../models/student');
 
-const seq = new sequelize("school", "school_admin", "123456", {
+const seq = new sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
     dialect: "postgres",
     host: "localhost"
 });
@@ -22,4 +22,4 @@ teacher.hasMany(lesson);
 seq.sync().then(result => console.log(result))
     .catch(err => console.log(err));
 
-module.exports = seq;
+module.exports = { teacher, lesson, group, student };
